@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "No Fancy Theme"
+title = "Test page"
 theme = "nofancy"
 
 #if not set copyright, default copyright template will be applied
@@ -10,9 +10,9 @@ copyright = "Copyright (c) 2008 - 2014, Steve Francia; all rights reserved."
     highlight="Assign a syntax highlight style"
 
 [author]
-    name = "Steve Francia"
-    github = "spf13"
-    linkedin = "YOUR LINKEDIN ID"
-    facebook = "YOUR FB ID"
+    name = "Blas Gomez"
+    github = "blgo"
+    linkedin = "blas-gomez-49080155"
+    facebook = "blasgf"
     gaID = "YOUR Google Analytics Tracking ID"
-    twitter = "YOUR TWITTER ID"
+    twitter = "JBlasGomez"
