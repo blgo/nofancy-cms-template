@@ -30,7 +30,7 @@
 
             <div class="post-content">
                 {{ .Content }}
-                <p>
+                <div id="images"></div>
                 <script  type="text/javascript">
     function getTagFromDescriptionContent() { 
     var metas = document.getElementsByTagName('meta'); 
@@ -58,8 +58,7 @@
                 var url = "https://res.cloudinary.com/dkdpqgjhi/image/upload/c_fit,w_" + Math.floor(document.body.clientWidth / 1.5) + "/v" + resource.version + "/" + resource.public_id + "." + resource.format;
                 var elem = document.createElement("img");
                 elem.src = url;
-        // document.getElementById("placehere").appendChild(elem);
-        document.body.appendChild(elem);
+        document.getElementById("images").appendChild(elem);
             }
                 
         
@@ -73,7 +72,6 @@
     };
     xhr.send(null);    
                 </script>
-                </p>
             </div>
         </div>
 	</div>
