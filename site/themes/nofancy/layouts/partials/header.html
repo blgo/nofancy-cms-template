@@ -35,5 +35,56 @@
 
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-</head>
-<body>
+  <!-- Hugo add tag metadata and images JavaScript if this has been set in the page content markdown-->
+  <!-- tag is added using the string widget from the CMS admin page. Config: site/static/admin/config.yml -->
+  <!-- Finally, the images are placed in <div id = images> -->
+  {{ if isset .Params "tag" }}
+  <meta name="tag" content='{{ index .Params "tag" }}'>
+    <script  type="text/javascript">
+        function getTagFromMetaContent() { 
+        var metas = document.getElementsByTagName('meta'); 
+
+        for (var i=0; i<metas.length; i++) { 
+            if (metas[i].getAttribute("name") == "tag") { 
+                return metas[i].getAttribute("content"); 
+            } 
+        } 
+
+        return "";
+        } 
+
+        var xhr = new XMLHttpRequest();
+        var metatag = getTagFromMetaContent();
+        xhr.open("GET", "https://res.cloudinary.com/dkdpqgjhi/image/list/" + metatag + ".json", true);
+        xhr.onload = function (e) {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+            console.log(xhr.responseText);
+                var json = JSON.parse(xhr.responseText);
+                
+                for (var i=0; i<json.resources.length; i++) {
+                    var resource = json.resources[i];
+                    if ( resource.width <= document.body.clientWidth) {
+                      var url = "https://res.cloudinary.com/dkdpqgjhi/image/upload/c_scale,w_" + resource.width + ",h_" + resource.height + "/v" + resource.version + "/" + resource.public_id + "." + resource.format;
+                    } else {
+                      var url = "https://res.cloudinary.com/dkdpqgjhi/image/upload/c_fit,w_" + Math.floor(document.body.clientWidth / 2) + "/v" + resource.version + "/" + resource.public_id + "." + resource.format;
+                    }
+                    var elem = document.createElement("img");
+                    elem.src = url;
+                    elem.style="padding:20px;";
+                document.getElementById("image").appendChild(elem);
+                }
+            } else {
+            console.error(xhr.statusText);
+            }
+        }
+        };
+        xhr.onerror = function (e) {
+        console.error(xhr.statusText);
+        };
+        xhr.send(null);    
+    </script>
+    {{ end }}
+
+  </head>
+  <body>

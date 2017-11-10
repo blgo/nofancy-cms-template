@@ -30,52 +30,15 @@
 
             <div class="post-content">
                 {{ .Content }}
-                <div id="images"></div>
+                <div id="images">
+                    <div id="image"></div>
+                </div>
+                </br>
+                </br>
 
             </div>
         </div>
 	</div>
     <div class="pure-u-1-24 pure-u-md-1-6"></div>
 </div>
-<script  type="text/javascript">
-    function getTagFromDescriptionContent() { 
-    var metas = document.getElementsByTagName('meta'); 
-
-    for (var i=0; i<metas.length; i++) { 
-        if (metas[i].getAttribute("name") == "description") { 
-            return metas[i].getAttribute("content"); 
-        } 
-    } 
-
-    return "";
-    } 
-
-    var xhr = new XMLHttpRequest();
-    var metatag = getTagFromDescriptionContent();
-    xhr.open("GET", "https://res.cloudinary.com/dkdpqgjhi/image/list/" + metatag + ".json", true);
-    xhr.onload = function (e) {
-    if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-        console.log(xhr.responseText);
-            var json = JSON.parse(xhr.responseText);
-            
-            for (var i=0; i<json.resources.length; i++) {
-                var resource = json.resources[i];
-                var url = "https://res.cloudinary.com/dkdpqgjhi/image/upload/c_fit,w_" + Math.floor(document.body.clientWidth / 1.5) + "/v" + resource.version + "/" + resource.public_id + "." + resource.format;
-                var elem = document.createElement("img");
-                elem.src = url;
-        document.getElementById("images").appendChild(elem);
-            }
-                
-        
-        } else {
-        console.error(xhr.statusText);
-        }
-    }
-    };
-    xhr.onerror = function (e) {
-    console.error(xhr.statusText);
-    };
-    xhr.send(null);    
-</script>
 {{ partial "footer.html" . }}
