@@ -1,8 +1,8 @@
 +++
 date = "2017-11-09T10:15:23-04:00"
 draft = false
-title = "about"
+title = "sobre"
 tag = "me"
 +++
 
-About myself:
+Sobre mi:

@@ -1,10 +1,10 @@
 baseurl = "/"
-languageCode = "en-us"
+languageCode = "en"
 title = "Test page"
 theme = "nofancy"
 
 #if not set copyright, default copyright template will be applied
-copyright = "Copyright (c) 2008 - 2014, Steve Francia; all rights reserved."
+copyright = "Copyright (c) 2017; all rights reserved."
 
 [params]
     highlight="Assign a syntax highlight style"
@@ -17,3 +17,24 @@ copyright = "Copyright (c) 2008 - 2014, Steve Francia; all rights reserved."
     facebook = "blasgf"
     gaID = "YOUR Google Analytics Tracking ID"
     twitter = "JBlasGomez"
+
+DefaultContentLanguage = "en"
+
+[params.navigation]
+help  = "Help"
+
+[Languages]
+[Languages.en]
+title = "My test page"
+weight = 1
+[Languages.en.params]
+linkedin = "english-link"
+
+[Languages.es]
+copyright = "Copyright (c) 2017; Todos los derechos reservados."
+title = "Mi pagina de pruebas"
+weight = 2
+[Languages.es.params]
+linkedin = "Enlace en espanol"
+[Languages.es.navigation]
+help  = "Ayuda"
