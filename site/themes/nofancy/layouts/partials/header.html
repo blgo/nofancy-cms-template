@@ -64,11 +64,11 @@
                 
                 for (var i=0; i<json.resources.length; i++) {
                     var resource = json.resources[i];
-                    //if ( resource.width <= document.body.clientWidth) {
+                    if ( resource.width <= document.body.clientWidth) {
                       var url = "https://res.cloudinary.com/dkdpqgjhi/image/upload/c_scale,w_" + resource.width + ",h_" + resource.height + "/v" + resource.version + "/" + resource.public_id + "." + resource.format;
-                    //} else {
-                    //  var url = "https://res.cloudinary.com/dkdpqgjhi/image/upload/c_fit,w_" + Math.floor(document.body.clientWidth / 2) + "/v" + resource.version + "/" + resource.public_id + "." + resource.format;
-                    //}
+                    } else {
+                      var url = "https://res.cloudinary.com/dkdpqgjhi/image/upload/c_fit,w_" + Math.floor(document.body.clientWidth / 2) + "/v" + resource.version + "/" + resource.public_id + "." + resource.format;
+                    }
                     var elem = document.createElement("img");
                     elem.src = url;
                     elem.style="padding:20px";
